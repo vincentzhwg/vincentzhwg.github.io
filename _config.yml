@@ -1,6 +1,6 @@
-highlighter: pygments
-permalink: /:title
+permalink: :title
 url: http://blog.kissdata.com
 author: vincentzhwg
 pygments: true
 paginate: 24
+timezone: Asia/Shanghai

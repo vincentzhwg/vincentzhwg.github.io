@@ -1,0 +1,120 @@
+---
+layout: default
+---
+
+<section class="post">
+{{ content }}
+</section>
+<section class="meta">
+<hr/>
+<span class="author">
+  <a href="http://blog.sevenche.com">{{ site.author }}</a> - Software Engineer with more than 7 years experience related to Java, Android and C++. He is now working for Avaya Emerging Product and Technology Department Shanghai, China.
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+{% if page.categories %}
+<span class="categories">
+  in categories
+  {% for cat in page.categories %}
+  <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
+  {% endfor %}
+</span>
+{% endif %}
+{% if page.tags %}
+<span class="tags">
+  tagged with 
+  {% for tag in page.tags %}
+  <a href="/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
+  {% endfor %}
+</span>
+{% endif %}
+<span class="time">
+  <br/>
+  <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>
+</span>
+</section>
+{% include comments_en.md %}
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            {% if page.previous %}
+        url = '{{ site.url }}{{ page.previous.url }}';
+        {% endif %}
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            {% if page.next %}
+        url = '{{ site.url }}{{ page.next.url }}';
+        {% endif %}
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+
+</script>
+
+<style type="text/css">
+/*resize the big pic*/
+div.resized_image p {
+  margin: 2px;
+  margin-top: 0;
+  font-size: 8px;
+  /* Awesome icon from here: http://www.famfamfam.com/lab/icons/silk/ */
+  background: url(http://i242.photobucket.com/albums/ff244/9861_omikron/error.png) no-repeat;
+  padding-left: 20px;
+  color: #333;
+}
+</style>
+<script type="text/javascript">
+//resize the big pic
+$(window).load(function() {
+  (
+    function(maxht, maxwt, minht, minwt) {
+      var imgs = document.getElementsByTagName('img');
+      // Image resizing function
+      var resize_image = function(img, newht, newwt) {
+        img.height = newht;
+        img.width  = newwt;
+        $(img).wrap('<table><tr><td class="tborder"><div class="resized_image"><a href="' + img.src + '" target="_blank"></a></div></td></tr></table>');
+        $(img).parent().before('<p>NOTE: This image was resized. To view it full-size, click on the image.</p>');
+        //$(img).parent().after('<p style="text-align:right;background:none;margin:0;padding-right:3px">Image resizing script by <a href="http://aetus.net/217/programming/automatically-resize-large-images-with-javascript/">Aetus Designs</a>.</p>');
+      };
+      
+      for (var i = 0; i < imgs.length; i++) {
+        // Set a variable for the current image to make the code make more sense.
+        var img = imgs[i];
+        if (img.height > maxht || img.width > maxwt) {
+          // Use Ratios to constraint proportions.
+          var old_ratio = img.height / img.width;
+          var min_ratio = minht / minwt;
+          // If it can scale perfectly.
+          if (old_ratio === min_ratio) {
+            resize_image(img, minht, minwt);
+          } 
+          // We need to do some magic now.
+          else {
+            var newdim = [img.height, img.width];
+            // Sort out the height first.
+            newdim[0] = minht;
+            // The logic behind this is that if ratio = ht / wt, then wt = ht / ratio.
+            newdim[1] = newdim[0] / old_ratio;
+            // Do we still have to sort out the width?
+            if (newdim[1] > maxwt) {
+              // Just do what we did with the height
+              newdim[1] = minwt;
+              newdim[0] = newdim[1] * old_ratio;
+            }
+            // So yeah, resize the image
+            resize_image(img, newdim[0], newdim[1]);
+          }
+        }
+      }
+    }
+  )(780, 780, 780, 780);
+});
+</script>

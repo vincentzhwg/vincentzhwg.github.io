@@ -1,4 +1,4 @@
-markdown: rdiscount
+#markdown: rdiscount
 permalink: /:title
 url: http://blog.kissdata.com
 author: vincentzhwg

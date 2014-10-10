@@ -1,4 +1,4 @@
-#markdown: rdiscount
+highlighter: pygments
 permalink: /:title
 url: http://blog.kissdata.com
 author: vincentzhwg

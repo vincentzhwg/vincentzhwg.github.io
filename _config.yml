@@ -1,6 +1,5 @@
 permalink: /:title.html
 url: http://blog.kissdata.com
 author: vincentzhwg
-pygments: true
 paginate: 24
 timezone: Asia/Shanghai

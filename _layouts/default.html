@@ -1,64 +1,51 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="{{ site.author }}" />
-    <meta name="viewport" content="width=device-width"> 
-    <title>{{ page.title }} | {{ site.author }}</title>
-	<!-- Jim disable
-	script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?autoload=true&skin=Desert"></script-->
-    <link href="/feed/" rel="alternate" title="{{ site.author }}" type="application/atom+xml" />
-    <link rel="shortcut icon" href="/favicon.ico"/>
-	<link rel="icon" href="/favicon.ico"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="zh-cn">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="author" content="{{ site.author }}" />
+        <meta name="viewport" content="width=device-width"> 
+        <title>{{ page.title }} | {{ site.data.conf.site_name }}</title>
+        <link href="/feed.html" rel="alternate" title="{{ site.author }}" type="application/atom+xml" />
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link rel="icon" href="/favicon.ico"/>
 
-    <link rel="stylesheet" href="/media/css/highlight.css">
-    <link href='/media/webfonts/ss-social.css' rel='stylesheet'>
-    <link href='/media/webfonts/ss-standard.css' rel='stylesheet'>
+        <link rel="stylesheet" href="/media/css/highlight.css">
+        <link href='/media/webfonts/ss-social.css' rel='stylesheet'>
+        <link href='/media/webfonts/ss-standard.css' rel='stylesheet'>
 
-    <script language="JavaScript"><!--
-        if (navigator.userAgent.match(/iPhone|iPod|Android|IEMobile/i)) {
-            document.write("<link href=\"/media/css/screen-mobil.css\" rel=\"stylesheet\">");
-        } else {
-            document.write("<link href=\"/media/css/screen.css\" rel=\"stylesheet\">");
-        }
-        // -->
-    </script>
+        <script language="JavaScript"><!--
+            if (navigator.userAgent.match(/iPhone|iPod|Android|IEMobile/i)) {
+                document.write("<link href=\"/media/css/screen-mobil.css\" rel=\"stylesheet\">");
+                } else {
+                document.write("<link href=\"/media/css/screen.css\" rel=\"stylesheet\">");
+            }
+            // -->
+        </script>
+        <script type="text/javascript" src="/media/js/jquery-1.11.1.min.js"></script>
 
-    <!--script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script-->
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
-	
-  </head>
-  <body>
-    <div id="container">
-      <div id="main" role="main">
-        <header>
-        <div class="buttons">
-          <a href="/" class="ss-icon" title="Go to homepage">home</a>
-          <a href="/categories.html" class="ss-icon" title="Category" >list</a>
-          <a href="/tags.html" class="ss-icon" title="Tag Cloud" >tags</a>
-          <a href="/guestbook.html" class="ss-icon" title="Guest Book" >talk</a>
-          <a href="/about.html" class="ss-icon" title="About" >user</a>
-          <a href="/feed.html" class="ss-icon" title="Subscribe by RSS" >rss</a>
+    </head>
+    <body>
+        <div id="container">
+            <div id="main" role="main">
+                <header>
+                <div class="buttons">
+                    <a href="/" class="ss-icon" title="Go to homepage">home</a>
+                    <a href="/categories.html" class="ss-icon" title="Category" >list</a>
+                    <a href="/tags.html" class="ss-icon" title="Tag Cloud" >tags</a>
+                    <a href="/guestbook.html" class="ss-icon" title="Guest Book" >talk</a>
+                    <a href="/about.html" class="ss-icon" title="About" >user</a>
+                    <a href="/feed.html" class="ss-icon" title="Subscribe by RSS" >rss</a>
+                </div>
+                <h1>{{ page.title }}</h1>
+                </header>
+                <hr>
+                <article class="content">
+                {{ content }}
+                </article>
+            </div>
+
+            {% include footer.html %}
+
         </div>
-        <h1>{{ page.title }}</h1>
-        </header>
-        <hr>
-        <article class="content">
-        {{ content }}
-        </article>
-      </div>
-
-    <footer>
-        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> | hosted at <a href="https://github.com/vincentzhwg">Github</a> | Copyright 2014 - {{site.time | date:"%Y"}}
-		| <span class="label label-info">{{site.time | date:"%Y-%m-%d %H:%M:%S"}}</span></small></p>
-		<p><small>kissdata: keep it simple &#38; stupied by data | vincentzhwg | 爱小牛牛，爱生活</small></p>
-
-        <!-- cnzz -->
-        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253396463'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s6.cnzz.com/z_stat.php%3Fid%3D1253396463%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </footer>
-
-    </div>
-
-  </body>
+    </body>
 </html>

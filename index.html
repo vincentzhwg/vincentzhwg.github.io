@@ -48,11 +48,6 @@ layout: page
     {% else %}
         <span class="next disabled" >后页></span>
     {% endif %}
-
-    {% if paginator.total_posts == "" %}
-        (共 0 篇)
-    {% else %}
-        (共 {{ paginator.total_posts }} 篇)
-    {% endif %}
+    (共 {{ paginator.total_posts }} 篇)
 </div>
 

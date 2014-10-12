@@ -3,3 +3,11 @@ url: http://blog.kissdata.com
 author: vincentzhwg
 paginate: 24
 timezone: Asia/Shanghai
+
+defaults:
+    -
+        scope:
+            path: ""
+            type: "posts"
+        values:
+            layout: "page"

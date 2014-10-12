@@ -1,6 +1,5 @@
 ---
 title: linux下解决跳板机ssh登录与传输问题记要
-layout: page
 date: 2014-05-21 16:00:00 +0800
 categories:
 - linux

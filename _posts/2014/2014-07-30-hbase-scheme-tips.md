@@ -75,6 +75,7 @@ StoreFile是只读的，一旦创建后就不可以再修改。因此Hbase的更
 ### 集成搜索
 
 HBase集成搜索的方式有多种：
+
 - 客户端控制，
 - Lucene；
 - HBasene，
@@ -83,6 +84,7 @@ HBase集成搜索的方式有多种：
 ### 集成事务
 
 HBase集成事务的方式：
+
 - ITHBase；
 - ZooKeeper，通过分布式锁。
 

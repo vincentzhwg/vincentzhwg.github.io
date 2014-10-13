@@ -1,6 +1,7 @@
 ---
 title: About me
 layout: page
+comments: false
 ---
   
 ##{{ site.author }}

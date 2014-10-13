@@ -47,8 +47,8 @@ tags:
 
 ## with如何工作?
 
-- 紧跟with后面的语句被求值后，返回对象的 \__enter__() 方法被调用，这个方法的返回值将被赋值给as后面的变量。
-- 当with后面的代码块全部被执行完之后，将调用前面返回对象的 \__exit__()方法。
+- 紧跟with后面的语句被求值后，返回对象的 \_\_enter\_\_() 方法被调用，这个方法的返回值将被赋值给as后面的变量。
+- 当with后面的代码块全部被执行完之后，将调用前面返回对象的 \_\_exit\_\_()方法。
 
 下面例子可以具体说明with如何工作：
 
@@ -78,12 +78,12 @@ tags:
 	In __exit__()
 
 正如你看到的:
-1.  \__enter__()方法被执行
-2.  \__enter__()方法返回的值 - 这个例子中是"Foo"，赋值给变量'sample'
+1.  \_\_enter\_\_()方法被执行
+2.  \_\_enter\_\_()方法返回的值 - 这个例子中是"Foo"，赋值给变量'sample'
 3.  执行代码块，打印变量"sample"的值为 "Foo"
-4.  \__exit__()方法被调用 with真正强大之处是它可以处理异常。
+4.  \_\_exit\_\_()方法被调用 with真正强大之处是它可以处理异常。
 
-可能你已经注意到Sample类的 \__exit__ 方法有三个参数 val, type 和 trace。 这些参数在异常处理中相当有用。我们来改一下代码，看看具体如何工作的。
+可能你已经注意到Sample类的 \_\_exit\_\_ 方法有三个参数 val, type 和 trace。 这些参数在异常处理中相当有用。我们来改一下代码，看看具体如何工作的。
 
 	#!/usr/bin/env python
 	# with_example02.py
@@ -104,7 +104,7 @@ tags:
 	with Sample() as sample:
 	    sample.do_something()
 
-这个例子中，with后面的get_sample()变成了Sample()。这没有任何关系，只要紧跟with后面的语句所返回的对象有 \__enter__() 和 \__exit__() 方法即可。此例中，Sample()的 \__enter__() 方法返回新创建的Sample对象，并赋值给变量sample。 
+这个例子中，with后面的get_sample()变成了Sample()。这没有任何关系，只要紧跟with后面的语句所返回的对象有 \_\_enter\_\_() 和 \_\_exit\_\_() 方法即可。此例中，Sample()的 \_\_enter\_\_() 方法返回新创建的Sample对象，并赋值给变量sample。 
 
 代码执行后：
 
@@ -120,16 +120,16 @@ tags:
 	ZeroDivisionError: integer division or modulo by zero
 
 
-实际上，在with后面的代码块抛出任何异常时，\__exit\__() 方法被执行。正如例子所示，异常抛出时，与之关联的type，value和stack trace传给 \__exit__() 方法，因此抛出的ZeroDivisionError异常被打印出来了。开发库时，清理资源，关闭文件等等操作，都可以放在 \__exit__ 方法当中。
+实际上，在with后面的代码块抛出任何异常时，\_\_exit\_\_() 方法被执行。正如例子所示，异常抛出时，与之关联的type，value和stack trace传给 \_\_exit\_\_() 方法，因此抛出的ZeroDivisionError异常被打印出来了。开发库时，清理资源，关闭文件等等操作，都可以放在 \_\_exit\_\_ 方法当中。
 
-另外，\__exit__ 除了用于tear things down，还可以进行异常的监控和处理，注意后几个参数。要跳过一个异常，只需要返回该函数True即可。
+另外，\_\_exit\_\_ 除了用于tear things down，还可以进行异常的监控和处理，注意后几个参数。要跳过一个异常，只需要返回该函数True即可。
 
 下面的样例代码跳过了所有的TypeError，而让其他异常正常抛出。
 
 	def __exit__(self, type, value, traceback):
 	    return isinstance(value, TypeError)
 
-上文说了 \__exit__ 函数可以进行部分异常的处理，如果我们不在这个函数中处理异常，他会正常抛出，这时候我们可以这样写（python 2.7及以上版本，之前的版本参考使用contextlib.nested这个库函数）：
+上文说了 \_\_exit\_\_ 函数可以进行部分异常的处理，如果我们不在这个函数中处理异常，他会正常抛出，这时候我们可以这样写（python 2.7及以上版本，之前的版本参考使用contextlib.nested这个库函数）：
 
 	try:
 	    with open( "a.txt" ) as f :

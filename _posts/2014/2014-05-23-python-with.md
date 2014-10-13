@@ -1,7 +1,6 @@
 ---
 title: python的with用法
 date: 2014-05-23 17:00:00 +0800
-comments: true
 categories:
 - python
 tags:

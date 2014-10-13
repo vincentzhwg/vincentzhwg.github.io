@@ -59,6 +59,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 这里假设安装dns服务机器的IP地址为 192.168.1.10
 
 **/etc/bind/named.conf.options**
+
 	options {
 	    directory "/var/cache/bind";
 	

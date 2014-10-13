@@ -131,7 +131,7 @@ nginx扩展方式有两种：
 	
 		...
 		
-		location = /lua_test {
+		location = /test {
 			content_by_lua_file /path/to/content_test.lua;
 		}
 		...

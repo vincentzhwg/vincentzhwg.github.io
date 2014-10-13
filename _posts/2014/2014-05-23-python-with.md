@@ -120,7 +120,7 @@ tags:
 	ZeroDivisionError: integer division or modulo by zero
 
 
-实际上，在with后面的代码块抛出任何异常时，\__exit__() 方法被执行。正如例子所示，异常抛出时，与之关联的type，value和stack trace传给 \__exit__() 方法，因此抛出的ZeroDivisionError异常被打印出来了。开发库时，清理资源，关闭文件等等操作，都可以放在 \__exit__ 方法当中。
+实际上，在with后面的代码块抛出任何异常时，\__exit\__() 方法被执行。正如例子所示，异常抛出时，与之关联的type，value和stack trace传给 \__exit__() 方法，因此抛出的ZeroDivisionError异常被打印出来了。开发库时，清理资源，关闭文件等等操作，都可以放在 \__exit__ 方法当中。
 
 另外，\__exit__ 除了用于tear things down，还可以进行异常的监控和处理，注意后几个参数。要跳过一个异常，只需要返回该函数True即可。
 

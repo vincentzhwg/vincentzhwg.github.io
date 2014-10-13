@@ -70,13 +70,19 @@ StoreFile是只读的，一旦创建后就不可以再修改。因此Hbase的更
 ### 利用column达到类似二级索引的效果
 
 一种高级的设计方式是利用column来当做RDBMS类似二级索引的应用设计，rowkey的存储达到一定程度后，利用column的有序，完成类似索引的设计，比如，一个CF(Column Family)叫做data存放数据本身，Column Qualifier是一个MD5形式的index，而value是实际的数据；再建一个CF叫做index存储刚才的MD5，这个index的CF的ColumnQualifier是真正的索引字段（比如名字或者任意的表字段，这样可以允许多个），而value是这个索引字段的MD5。每次查询时就可以先在index里找到这个索引（查询条件不同，选择的索引字段不同），然后利用这个索引到data里找到数据，两次查询实现真正的复杂条件业务查询。
-实现二级索引还有其他途径，比如：1，客户端控制，即一次读取将所有数据取回，在客户端做各种过滤操作，优点自然是控制力比较强，但是缺点在性能和一致性的保证上；2，Indexed-Transactional HBase，这是个开源项目，扩展了HBase，在客户端和服务端加入了扩展实现了事务和二级索引；3，Indexed-HBase；4，Coprocessor。
+
+实现二级索引还有其他途径，比如：
+
+1. 客户端控制，即一次读取将所有数据取回，在客户端做各种过滤操作，优点自然是控制力比较强，但是缺点在性能和一致性的保证上；
+2. Indexed-Transactional HBase，这是个开源项目，扩展了HBase，在客户端和服务端加入了扩展实现了事务和二级索引；
+3. Indexed-HBase；
+4. Coprocessor。
 
 ### 集成搜索
 
 HBase集成搜索的方式有多种：
 
-- 客户端控制，
+- 客户端控制，同上；
 - Lucene；
 - HBasene，
 - Coprocessor。

@@ -4,7 +4,7 @@ date: 2014-06-21 16:00:00 +0800
 categories:
 - linux
 tags:
-- linux
+- virtualbox
 ---
 
 解决步骤如下：

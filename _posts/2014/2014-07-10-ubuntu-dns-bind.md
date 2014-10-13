@@ -108,6 +108,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 	ns1 IN A 192.168.1.10   ;定义ns1的对应关系
 	h01 IN A 192.168.0.10   ;定义h01的对应关系
 
+----------------
 
 **/etc/bind/db.168.192**
 
@@ -124,6 +125,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 	10.1  IN PTR ns1.example.com.  ; 反过来写IP地址,且最后一定要有个 . 符号,这一行表示反向解析 192.168.1.10为ns1.example.com
 	10.0  IN PTR h01.example.com.
 
+-----------------
 
 #### 配置项的检查
 
@@ -181,6 +183,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 	    also-notify { 192.168.1.11 };
 	};
 
+--------------
 
 **主服务器的/etc/bind/db.example.com**
 
@@ -199,6 +202,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 	ns2 IN A 192.168.1.11   ;定义ns2的对应关系
 	h01 IN A 192.168.0.10   ;定义h01的对应关系
 
+--------------
 
 **主服务器的/etc/bind/db.168.192**
 
@@ -217,7 +221,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 	11.1  IN PTR ns2.example.com.
 	10.0  IN PTR h01.example.com.
 
-
+------------------
 
 **从服务器的/etc/bind/named.conf.options**
 
@@ -235,6 +239,7 @@ Bind的SOA记录：每个Zone仅有一个SOA记录。SOA记录包括Zone的名�
 	    listen-on-v6 { any; };
 	};
 
+----------------------
 
 **从服务器的named.conf.local**
 

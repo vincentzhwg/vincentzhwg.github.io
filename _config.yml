@@ -4,11 +4,17 @@ author: vincentzhwg
 paginate: 24
 timezone: Asia/Shanghai
 
-defaults:
-    -
-        scope:
-            path: ""
-            type: "posts"
-        values:
-            layout: "page"
-            comments: "true"
+collections:
+    - posts:
+        layout: "page"
+        comments: "true"
+
+
+#defaults:
+#    -
+#        scope:
+#            path: ""
+#            type: "posts"
+#        values:
+#            layout: "page"
+#            comments: "true"

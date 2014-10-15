@@ -11,7 +11,6 @@ tags:
 
 直接替换 /etc/fonts/conf.d/49-sansserif.conf 的文件内容如下:
 
-
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 	<fontconfig>

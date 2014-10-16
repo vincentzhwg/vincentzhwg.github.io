@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cn">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="{{ site.author }}" />
         <meta name="viewport" content="width=device-width"> 
         <title>{{ page.title }} | {{ site.data.conf.site_name }}</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- bootstrap source -->
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
         <link href="/feed.html" rel="alternate" title="{{ site.author }}" type="application/atom+xml" />
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="icon" href="/favicon.ico"/>
 
-        <link rel="stylesheet" href="/media/css/highlight.css">
-        <link href='/media/webfonts/ss-social.css' rel='stylesheet'>
-        <link href='/media/webfonts/ss-standard.css' rel='stylesheet'>
-
-        <script language="JavaScript"><!--
-            if (navigator.userAgent.match(/iPhone|iPod|Android|IEMobile/i)) {
-                document.write("<link href=\"/media/css/screen-mobil.css\" rel=\"stylesheet\">");
-                } else {
-                document.write("<link href=\"/media/css/screen.css\" rel=\"stylesheet\">");
-            }
-            // -->
-        </script>
-        <script type="text/javascript" src="/media/js/jquery-1.11.1.min.js"></script>
-
     </head>
     <body>
-        <div id="container">
+        <div class="container">
+            <div class="row">
+                {% include header.html %}
+            </div>
+
             <div id="main" role="main">
                 <header>
                 <div class="buttons">

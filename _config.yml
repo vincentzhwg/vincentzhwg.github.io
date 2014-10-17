@@ -1,8 +1,8 @@
 permalink: /:year/:month/:day/:title.html
-url: http://blog.kissdata.com
 author: vincentzhwg
 paginate: 24
 timezone: Asia/Shanghai
+url: http://blog.kissdata.com
 
 defaults:
     -

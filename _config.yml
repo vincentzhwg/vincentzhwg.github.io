@@ -1,9 +1,23 @@
+### jekyll参数
 permalink: /:year/:month/:day/:title.html
-author: vincentzhwg
 paginate: 24
 timezone: Asia/Shanghai
-url: http://blog.kissdata.com
 
+
+### 自定义参数
+site_name: kissdata
+site_description: keep it simple &#38; stupied by data | 爱小牛牛，爱生活
+url: http://blog.kissdata.com
+author: vincentzhwg
+author_github_url: https://github.com/vincentzhwg
+author_email: vincentzhwg@gmail.com
+duoshuo_short_name: kissdata
+kp747_id: 017020a090e0e3d7
+cnzz_id: 1253396463
+
+
+
+### jekyll配置
 defaults:
     -
         scope:

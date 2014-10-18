@@ -4,7 +4,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="{{ site.author }}" />
         <meta name="viewport" content="width=device-width" /> 
-        <title>{{ page.title }} | {{ site.data.conf.site_name }}</title>
+        <title>{{ page.title }} | {{ site.site_name }}</title>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,7 +36,16 @@
     <body>
             {% include header.html %}
 
-            {{ content }}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9" id="main-left">
+                        {{ content }}
+                    </div>
+                    <div class="col-md-3" id="main-right">
+                        {% include side.html %}
+                    </div>
+                </div>
+            </div>
 
             {% include footer.html %}
     </body>

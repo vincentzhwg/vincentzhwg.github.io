@@ -4,90 +4,58 @@ layout: page
 comments: false
 ---
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{ page.title }}</h1>
-        </div>
-    </div>
+<h1>{{ page.title }}</h1>
+<hr class="small-margin" />
 
-    <hr class="small-margin" />
+<ul class="listing">
+    {% for post in paginator.posts %}
 
-    <div class="row">
-        <div class="col-mod-12">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- kissdata-blog- 长横幅 -->
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:728px;height:90px"
-                data-ad-client="ca-pub-1339945837472110"
-                data-ad-slot="9657522081"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-    </div>
+    {% capture y %}
+    {{post.date | date:"%Y"}}
+    {% endcapture %}
 
-    <hr class="small-margin" />
+    {% if year != y %}
+    {% assign year = y %}
+    <li class="listing-seperator">{{ y }}</li>
+    {% endif %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <ul class="listing">
-                {% for post in paginator.posts %}
+    <li class="listing-item">
+    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
 
-                    {% capture y %}
-                        {{post.date | date:"%Y"}}
-                    {% endcapture %}
+<div id="post-pagination" class="paginator">
 
-                    {% if year != y %}
-                        {% assign year = y %}
-                        <li class="listing-seperator">{{ y }}</li>
-                    {% endif %}
+    {% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+    <a href="/"><前页</a>
+    {% else %}
+    <a href="/page{{paginator.previous_page}}"><前页</a>
+    {% endif %}
+    {% else %}
+    <span class="previous disabled"><前页</span>
+    {% endif %}
 
-                    <li class="listing-item">
-                        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+    {% if paginator.page == 1 %}
+    <span class="current-page">1</span>
+    {% else %}
+    <a href="/">1</a>
+    {% endif %}
 
-            <div id="post-pagination" class="paginator">
+    {% for count in (2..paginator.total_pages) %}
+    {% if count == paginator.page %}
+    <span class="current-page">{{count}}</span>
+    {% else %}
+    <a href="/page{{count}}">{{count}}</a>
+    {% endif %}
+    {% endfor %}
 
-                {% if paginator.previous_page %}
-                {% if paginator.previous_page == 1 %}
-                <a href="/"><前页</a>
-                {% else %}
-                <a href="/page{{paginator.previous_page}}"><前页</a>
-                {% endif %}
-                {% else %}
-                <span class="previous disabled"><前页</span>
-                {% endif %}
-
-                {% if paginator.page == 1 %}
-                <span class="current-page">1</span>
-                {% else %}
-                <a href="/">1</a>
-                {% endif %}
-
-                {% for count in (2..paginator.total_pages) %}
-                {% if count == paginator.page %}
-                <span class="current-page">{{count}}</span>
-                {% else %}
-                <a href="/page{{count}}">{{count}}</a>
-                {% endif %}
-                {% endfor %}
-
-                {% if paginator.next_page %}
-                <a class="next" href="/page{{paginator.next_page}}">后页></a>
-                {% else %}
-                <span class="next disabled" >后页></span>
-                {% endif %}
-                (共 {{ paginator.total_posts }} 篇)
-            </div>
-       </div> 
-    </div>
-
-
+    {% if paginator.next_page %}
+    <a class="next" href="/page{{paginator.next_page}}">后页></a>
+    {% else %}
+    <span class="next disabled" >后页></span>
+    {% endif %}
+    (共 {{ paginator.total_posts }} 篇)
 </div>
-
-
-

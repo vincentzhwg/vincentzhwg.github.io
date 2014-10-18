@@ -5,14 +5,14 @@
             <p class="text-center">
                 Copyright 2014 - {{site.time | date:"%Y"}} | Gen time&#58; {{site.time | date:"%Y-%m-%d %H:%M:%S %Z"}}
                 <!-- cnzz -->
-	        	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_{{ site.data.conf.cnzz_id }}'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s6.cnzz.com/z_stat.php%3Fid%3D{{ site.data.conf.cnzz_id }}%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
+	        	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_{{ site.cnzz_id }}'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s6.cnzz.com/z_stat.php%3Fid%3D{{ site.cnzz_id }}%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
 
                 <!-- kp747 -->
                 <script type="text/javascript"> 
                     (function(_onload) {
                      window.onload = function(){
                      typeof _onload =="function"?_onload():{};
-                     var s= document.createElement('script');s.src="http://c.kp747.com/k.js?id={{ site.data.conf.kp747_id }}&ref="+encodeURIComponent(document.referrer);
+                     var s= document.createElement('script');s.src="http://c.kp747.com/k.js?id={{ site.kp747_id }}&ref="+encodeURIComponent(document.referrer);
                      document.body.appendChild(s);
                      } })(window.onload);
                 </script>

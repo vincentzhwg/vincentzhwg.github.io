@@ -12,6 +12,10 @@ body {
     margin-bottom: 2px;
 }
 
+.normal-a {
+    cursor: default;
+}
+
 
 /* header */
 span#site_name {
@@ -25,3 +29,13 @@ span#site_description {
     color: #E3BDA4;
 }
 
+
+#main-left {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#main-right {
+    padding-right: 0;
+    padding-left: 0;
+}

@@ -1,0 +1,10 @@
+<h4>分类</h4>
+<hr class="small-margin" />
+<ul>
+    {% for cat in site.categories %}
+    <li><a href="#{{ cat[0] }}" title="{{ cat[0] }}">{{ cat[0] }} ({{ cat[1].size }})</a></li>
+    {% endfor %}
+</ul>
+
+<hr class="small-margin" />
+

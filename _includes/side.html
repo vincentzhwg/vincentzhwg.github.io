@@ -1,10 +1,21 @@
-<h4>分类</h4>
-<hr class="small-margin" />
-<ul>
-    {% for cat in site.categories %}
-    <li><a href="#{{ cat[0] }}" title="{{ cat[0] }}">{{ cat[0] }} ({{ cat[1].size }})</a></li>
-    {% endfor %}
-</ul>
+<div>
+    <h4><strong>文章分类</strong></h4>
+    <hr class="small-margin" />
+    <ul class="side-cat-ul">
+        {% for cat in site.categories %}
+        <li><a href="/categories.html#cat-{{ cat[0] }}" title="{{ cat[0] }}">{{ cat[0] }} ({{ cat[1].size }})</a></li>
+        {% endfor %}
+    </ul>
+</div>
 
 <hr class="small-margin" />
+<div>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- kissdata blog 边栏 -->
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:300px;height:600px"
+        data-ad-client="ca-pub-1339945837472110"
+        data-ad-slot="8220828081"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 

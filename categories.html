@@ -1,0 +1,23 @@
+---
+title: Categories
+layout: default
+comments: false
+---
+
+{% for cat in site.categories %}
+<a name="cat-{{ cat[0] }}" id="cat-{{ cat[0] }}"></a>
+<div class="miaodian">
+</div>
+<div class="cat-card">
+    <div class="head">
+        <span class="title">{{ cat[0] }}</title>
+    </div>
+    <div class="content">
+        <ul>
+        {% for post in cat[1] %}
+            <li><span class="date">{{ post.date | date:"%Y-%m-%d" }}</span><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endfor %}

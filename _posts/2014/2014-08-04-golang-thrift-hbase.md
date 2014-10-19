@@ -8,10 +8,14 @@ tags:
 - golang
 ---
 
+hbase的原生操作语言是java，不过线上一个系统中使用了go语言，在网上找了好多资料，看来通过thrift接口对于go来说是比较好的一种方式，下面是记录如何通过thrift接口让go语言操作hbase的数据。
+
+
+
+
 ## 准备工作
 
 golang开发环境及Hbase都已经搭建好
-
 
 ## 编译thrift
 

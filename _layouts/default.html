@@ -32,16 +32,38 @@
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                    var bt = $('#toolBackTop');
+                    var sw = $(document.body)[0].clientWidth;
+            
+                    var limitsw = (sw - 840) / 2 - 80;
+                    if (limitsw > 0){
+                    limitsw = parseInt(limitsw);
+                    bt.css("right",limitsw);
+                    }
+            
+                    $(window).scroll(function() {
+                        var st = $(window).scrollTop();
+                        if(st > 30){
+                        bt.show();
+                        }else{
+                        bt.hide();
+                        }
+                        });
+                    })
+        </script>
+
     </head>
     <body>
             {% include header.html %}
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9" id="main-left">
+                    <div class="col-md-8" id="main-left">
                         {{ content }}
                     </div>
-                    <div class="col-md-3" id="main-right">
+                    <div class="col-md-4" id="main-right">
                         {% include side.html %}
                     </div>
                 </div>

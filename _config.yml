@@ -1,7 +1,8 @@
 ### jekyll参数
 permalink: /:year/:month/:day/:title.html
-paginate: 24
+paginate: 2
 timezone: Asia/Shanghai
+excerpt_separator: "\n\n\n\n"       ## 替换掉默认的 \n\n ，第一个连续三行的空行前的内容做为文章摘要
 
 
 ### 自定义参数

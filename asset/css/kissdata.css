@@ -3,6 +3,34 @@ body {
     padding-bottom: 30px;
 }
 
+.back-to {
+    bottom: 35px;
+    overflow: hidden;
+    position: fixed;
+    right: 10px;
+    width: 110px;
+    z-index: 999;
+}
+.back-to .back-top {
+    background: url("/asset/image/back-top.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 50px;
+    margin-left: 10px;
+    outline: 0 none;
+    text-indent: -9999em;
+    width: 50px;
+}
+.back-to .back-top:hover {
+    background-position: -50px 0
+}
+
+#main-left {
+}
+
+#main-right {
+}
+
 .no-margin {
     margin: 0
 }
@@ -29,13 +57,89 @@ span#site_description {
     color: #E3BDA4;
 }
 
-
-#main-left {
-    padding-right: 0;
-    padding-left: 0;
+.side-cat-ul {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
 }
 
-#main-right {
-    padding-right: 0;
-    padding-left: 0;
+.side-cat-ul li {
+    line-height: 28px;
+    font-size: 16px;
+}
+
+.side-cat-ul li a:hover {
+}
+
+.miaodian {
+    height: 55px;
+}
+
+.cat-card {
+    padding: 15px;
+    margin: 0;
+    border: 1px solid #BBB;
+    border-left-width: 5px;
+    border-left-color: #DDB822;
+    border-radius: 3px;
+}
+
+.cat-card .content .date {
+    font-size: 14px;
+    color: #AAA;
+    margin-right: 8px;
+}
+
+.cat-card .content ul {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.cat-card .content ul li {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+
+.cat-card .head .title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+
+.cat-card .head, .post-card .head {
+    padding-bottom: 5px;
+}
+
+
+.post-card {
+    padding: 15px;
+    margin: 25px 0;
+    border: 1px solid #BBB;
+    border-left-width: 5px;
+    border-left-color: #d9534f;
+    border-radius: 3px;
+}
+
+.post-card .head .title {
+    font-weight: bold;
+    font-size: 20px;
+}
+.post-card .head .date {
+    color: #AAA;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.post-card .more {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+.pagi-total {
+    margin-top: 0px;
+    margin-bottom: 2px;
 }

@@ -1,61 +1,60 @@
 ---
 title: kissdata &#58; keep it simple &#38; stupied by data
-layout: page
+layout: default
 comments: false
 ---
 
 <h1>{{ page.title }}</h1>
+
 <hr class="small-margin" />
 
-<ul class="listing">
+<div>
     {% for post in paginator.posts %}
-
-    {% capture y %}
-    {{post.date | date:"%Y"}}
-    {% endcapture %}
-
-    {% if year != y %}
-    {% assign year = y %}
-    <li class="listing-seperator">{{ y }}</li>
-    {% endif %}
-
-    <li class="listing-item">
-    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-    </li>
+    <div class="post-card">
+        <div class="head"><a href="{{ post.url }}"><span class="title">{{ post.title }}</span></a><span class="date">{{ post.date | date:"%Y-%m-%d" }}</span></div>
+        <div class="content">{{ post.excerpt }}</div>
+        <div class="more text-right"><a href="{{ post.url }}">继续阅读全文</a></div>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
-<div id="post-pagination" class="paginator">
+<div>
+    <ul class="pagination">
+        {% if paginator.previous_page %}
+            {% if 1 == paginator.previous_page %}
+                <li><a href="/">&laquo;</a></li>
+            {% else %}
+                <li><a href="/page{{ paginator.previous_page }}" title="previous page">&laquo;</a></li>
+            {% endif %}
+        {% endif %}
 
-    {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-    <a href="/"><前页</a>
-    {% else %}
-    <a href="/page{{paginator.previous_page}}"><前页</a>
-    {% endif %}
-    {% else %}
-    <span class="previous disabled"><前页</span>
-    {% endif %}
+        {% capture tt %}{{ paginator.page | minus:6 }}{% endcapture %}
+        {% capture uu %}{{ tt | split:"-" | size }}{% endcapture %}
+        {% if "2" == uu %}
+            {% assign count_start = 1 %}
+        {% endif %}
+        start:{{ uu }}:{{ count_start }}
 
-    {% if paginator.page == 1 %}
-    <span class="current-page">1</span>
-    {% else %}
-    <a href="/">1</a>
-    {% endif %}
 
-    {% for count in (2..paginator.total_pages) %}
-    {% if count == paginator.page %}
-    <span class="current-page">{{count}}</span>
-    {% else %}
-    <a href="/page{{count}}">{{count}}</a>
-    {% endif %}
-    {% endfor %}
+        {% capture pp %}{{ paginator.page | plus:6 | minus:paginator.total_pages }}{% endcapture %}
+        {% capture qq %}{{ pp | split:"-" | size }}{% endcapture %}
+        end:{{ qq }}
 
-    {% if paginator.next_page %}
-    <a class="next" href="/page{{paginator.next_page}}">后页></a>
-    {% else %}
-    <span class="next disabled" >后页></span>
-    {% endif %}
-    (共 {{ paginator.total_posts }} 篇)
+        {% for count in (1..paginator.total_pages) %}
+            {% if count == paginator.page %}
+                <li class="active"><span>{{ count }}<span class="sr-only">(current)</span></span></li>
+            {% elsif 1 == count %}
+                <li><a href="/">1</a></li>
+            {% else %}
+                <li><a href="/page{{ count }}">{{ count }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+            <li><a href="{{ paginator.next_page_path }}" title="next page">&raquo;</a></li>
+        {% endif %}
+    </ul>
+</div>
+<div class="pagi-total">
+总共 {{paginator.total_posts }} 篇
 </div>

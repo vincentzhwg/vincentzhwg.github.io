@@ -82,7 +82,7 @@ defaults:
             type: "posts"
         values:
             layout: "page"
-            category: "给小牛牛的开心"
+            category: "小牛牛的happiness"
             comments: "true"
 
 

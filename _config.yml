@@ -25,5 +25,5 @@ defaults:
             path: ""
             type: "posts"
         values:
-            layout: page
-            comments: true
+            layout: "page"
+            comments: "true"

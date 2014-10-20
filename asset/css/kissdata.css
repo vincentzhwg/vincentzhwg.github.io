@@ -80,11 +80,14 @@ span#site_description {
     height: 55px;
 }
 
+.post-card, .cat-card {
+    border: 1px solid #6F6F91;
+    border-left-width: 6px;
+}
+
 .cat-card {
     padding: 15px;
     margin: 0;
-    border: 1px solid #BBB;
-    border-left-width: 5px;
     border-left-color: #DDB822;
     border-radius: 3px;
 }
@@ -104,7 +107,7 @@ span#site_description {
 
 .cat-card .content ul li {
     font-size: 14px;
-    line-height: 24px;
+    line-height: 26px;
 }
 
 
@@ -122,10 +125,9 @@ span#site_description {
 .post-card {
     padding: 15px;
     margin: 25px 0;
-    border: 1px solid #BBB;
-    border-left-width: 5px;
     border-left-color: #d9534f;
     border-radius: 3px;
+    background-color: #DDD;
 }
 
 .post-card .head .title {

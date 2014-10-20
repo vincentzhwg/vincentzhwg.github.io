@@ -13,6 +13,9 @@ tags:
 
 通过几番搜索，找到一个好办法，那就是利用ssh的controlmaster特性，结合 ~/。ssh/config 的配置来使用，但还未达到最终目的，可以直达真正想要到达的服务器，后续再找办法吧。
 
+
+
+
 编辑 ~/.ssh/config 文件，示例内容如下
 
     Host a.b.com XXX

@@ -18,43 +18,20 @@ comments: false
     {% endfor %}
 </div>
 
-<div>
-    <ul class="pagination">
+<div class="nav-post-links">
         {% if paginator.previous_page %}
+        <span class="newer-posts-link">
             {% if 1 == paginator.previous_page %}
-                <li><a href="/">&laquo;</a></li>
+                <a href="/">&laquo; Newer Posts</a>
             {% else %}
-                <li><a href="/page{{ paginator.previous_page }}" title="previous page">&laquo;</a></li>
+                <a href="/page{{ paginator.previous_page }}" title="previous page">&laquo; Newer Posts</a>
             {% endif %}
+        </span>
         {% endif %}
-
-        {% capture tt %}{{ paginator.page | minus:6 }}{% endcapture %}
-        {% capture uu %}{{ tt | split:"-" | size }}{% endcapture %}
-        {% if "2" == uu %}
-            {% assign count_start = 1 %}
-        {% endif %}
-        start:{{ uu }}:{{ count_start }}
-
-
-        {% capture pp %}{{ paginator.page | plus:6 | minus:paginator.total_pages }}{% endcapture %}
-        {% capture qq %}{{ pp | split:"-" | size }}{% endcapture %}
-        end:{{ qq }}
-
-        {% for count in (1..paginator.total_pages) %}
-            {% if count == paginator.page %}
-                <li class="active"><span>{{ count }}<span class="sr-only">(current)</span></span></li>
-            {% elsif 1 == count %}
-                <li><a href="/">1</a></li>
-            {% else %}
-                <li><a href="/page{{ count }}">{{ count }}</a></li>
-            {% endif %}
-        {% endfor %}
 
         {% if paginator.next_page %}
-            <li><a href="{{ paginator.next_page_path }}" title="next page">&raquo;</a></li>
+        <span class="older-posts-link">
+            <a href="{{ paginator.next_page_path }}" title="next page">Older Posts &raquo;</a>
+        </span>
         {% endif %}
-    </ul>
-</div>
-<div class="pagi-total">
-总共 {{paginator.total_posts }} 篇
 </div>

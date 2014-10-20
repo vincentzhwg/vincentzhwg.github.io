@@ -1,5 +1,5 @@
 ---
-title: nginx配合lua实现逻辑处理与日志的周期性落地
+title: nginx + lua实现逻辑处理与日志周期性落地
 date: 2014-10-13 17:14:00 +0800
 categories:
 - web

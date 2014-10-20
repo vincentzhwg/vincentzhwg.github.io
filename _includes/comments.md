@@ -1,5 +1,5 @@
-<section class="comment">
-
+<div class="comment">
+    
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}"></div>
     <!-- 多说评论框 end -->
@@ -17,4 +17,4 @@
     </script>
     <!-- 多说公共JS代码 end -->
     
-</section>
+</div>

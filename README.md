@@ -1,14 +1,6 @@
-此Git库为我的博客，博客模板由[七扯](http://blog.sevenCHE.com) 修改而来。
-使用Jekyll进行搭建，Jekyll是一个Ruby写的程序，可以将Markdown写的文章通过模板生成最终的Html静态文件。
-博客文章的评论功能使用了Disqus。
+本模板是我个人用bootstrap创建的，欢迎其他人使用本模板。
 
-如果你直接拷贝或Fork本Git库作为自己的博客，请遵循以下步骤：
-- 一定不要忘记删除我写的文章和Git历史（删除.git文件夹）
-- 修改 `_includes / comments.md` 中的disqus_shortname
-- 修改 `_layouts / default.html`中 google analytics的相关的JS代码片段
-- 替换掉 `about/index.md` 中的个人信息
-- 修改 _config.yml 中的相关字段
-- 修改 CNAME 文件中的自定义域名
+使用本模板有以下注意事项：
 
-最后感谢您的配合。
-
+- 删除_posts下的所有文章内容
+- 修改_config.yml下的自定义参数下面的选项内容，相信你一看就懂怎么修改 

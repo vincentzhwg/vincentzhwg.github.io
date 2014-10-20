@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: info
 title: 留言
 comments: yes
 id: guestbook

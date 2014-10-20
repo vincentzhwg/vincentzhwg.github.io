@@ -1,8 +1,3 @@
-body {
-    padding-top: 55px;
-    padding-bottom: 30px;
-}
-
 .back-to {
     bottom: 35px;
     overflow: hidden;
@@ -39,6 +34,11 @@ body {
     margin-top: 2px;
     margin-bottom: 2px;
 }
+.middle-margin {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
 
 .normal-a {
     cursor: default;
@@ -138,8 +138,43 @@ span#site_description {
     font-size: 14px;
 }
 
-
 .pagi-total {
     margin-top: 0px;
     margin-bottom: 2px;
+}
+
+
+.older-posts-link a, .newer-posts-link a {
+    margin: 0 15px;
+    padding: 8px;
+    border: 1px solid #BBB;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: green;
+    color: white;
+}
+.older-posts-link a:hover, .newer-posts-link a:hover {
+    color: red;
+    background-color: #D2D282;
+}
+
+.page {
+    background-color: #444;
+    color: #eee;
+    padding: 15px;
+}
+.page .head {
+    margin-top: 5px;
+}
+.page .head .title {
+    font-size: 34px;
+    font-weight: bold;
+}
+.page .head .date {
+    font-size: 16px;
+    color: #AAA;
+    margin-left: 8px;
+}
+.page .content {
+    font-size: 120%;
 }

@@ -2,11 +2,31 @@
 layout: default
 ---
 
-<section class="post">
-    {{ content }}
-</section>
+<div class="page">
+    <div class="head">
+        <div class="title">{{ page.title }}</div>
+        <div class="date">date: {{ page.date | date:"%Y-%m-%d" }}</div>
+    </div>
+    <hr class="middle-margin" />
+    <div>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- kissdata-blog- 长横幅 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-1339945837472110"
+            data-ad-slot="9657522081"></ins>
+        <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    </div>
+    <hr class="middle-margin" />
+    <div class="content">
+        {{ content }}
+    </div>
+</div>
 
-{% if page.comments %}
-    {% include comments.md %}
+
+{% if site.duoshuo_short_name %}
+    {% if page.comments %}
+        {% include comments.md %}
+    {% endif %}
 {% endif %}
 

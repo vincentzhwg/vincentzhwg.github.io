@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="info">
+    <div class="head">
+        <h2>{{ page.title }}</h2>
+    </div>
+    <hr class="middle-margin" />
+    <div class="content">
+        {{ content }}
+    </div>
+</div>
+
+{% if site.duoshuo_short_name %}
+    {% if page.comments %}
+        {% include comments.md %}
+    {% endif %}
+{% endif %}

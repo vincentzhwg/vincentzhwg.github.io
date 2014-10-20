@@ -1,8 +1,6 @@
 ---
 title: linux服务器调整ulimit数值
 date: 2014-07-16 16:00:00 +0800
-categories:
-- linux
 tags:
 - ulimit
 ---

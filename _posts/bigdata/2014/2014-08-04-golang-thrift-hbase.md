@@ -1,8 +1,6 @@
 ---
 title: golang通过thrift操作Hbase
 date: 2014-08-04 16:00:00 +0800
-categories:
-- bigdata
 tags:
 - hbase
 - golang

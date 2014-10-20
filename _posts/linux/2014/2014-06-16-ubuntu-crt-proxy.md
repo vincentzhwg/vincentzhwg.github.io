@@ -1,8 +1,6 @@
 ---
 title: ubuntu导入网站证书与设置网络代理的方法
 date: 2014-06-16 16:00:00 +0800
-categories:
-- linux
 tags:
 - ubuntu
 ---

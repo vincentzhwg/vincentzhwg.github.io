@@ -1,8 +1,6 @@
 ---
 title: ubuntu搭建本地网DNS服务器
 date: 2014-07-10 16:00:00 +0800
-categories:
-- linux
 tags:
 - dns
 ---

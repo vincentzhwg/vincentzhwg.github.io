@@ -1,8 +1,6 @@
 ---
 title: linux下virtualbox里虚拟机不能识别U盘等移动设备的解决办法
 date: 2014-06-21 16:00:00 +0800
-categories:
-- linux
 tags:
 - virtualbox
 ---

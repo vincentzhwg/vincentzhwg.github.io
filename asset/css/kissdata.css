@@ -93,7 +93,7 @@ span#site_description {
 }
 
 .cat-card .content .date {
-    font-size: 14px;
+    font-size: 15px;
     color: #AAA;
     margin-right: 8px;
 }
@@ -106,8 +106,8 @@ span#site_description {
 }
 
 .cat-card .content ul li {
-    font-size: 14px;
-    line-height: 26px;
+    font-size: 15px;
+    line-height: 27px;
 }
 
 

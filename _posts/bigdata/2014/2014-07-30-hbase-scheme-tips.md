@@ -1,8 +1,6 @@
 ---
 title: Hbase模式（schema）设计时的tips
 date: 2014-07-30 16:00:00 +0800
-categories:
-- bigdata
 tags:
 - hbase
 ---

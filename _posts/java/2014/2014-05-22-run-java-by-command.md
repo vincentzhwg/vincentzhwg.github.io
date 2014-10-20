@@ -1,8 +1,6 @@
 ---
 title: java命令行运行jar包的正确方式
 date: 2014-05-22 16:00:00 +0800
-categories:
-- java
 tags:
 - java
 ---

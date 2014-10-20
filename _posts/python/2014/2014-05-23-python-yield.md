@@ -1,8 +1,6 @@
 ---
 title: python的yield 用法说明
 date: 2014-05-23 16:00:00 +0800
-categories:
-- python
 tags:
 - yield
 ---

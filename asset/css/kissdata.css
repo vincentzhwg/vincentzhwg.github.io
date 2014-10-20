@@ -168,6 +168,7 @@ span#site_description {
     background-color: #444;
     color: #eee;
     padding: 15px;
+    border-radius: 3px;
 }
 .page .head {
     margin-top: 5px;

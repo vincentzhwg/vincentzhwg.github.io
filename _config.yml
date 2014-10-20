@@ -1,24 +1,24 @@
-### jekyll参数
+### jekyll params
 permalink: /:year/:month/:day/:title.html
 paginate: 8
 timezone: Asia/Shanghai
-excerpt_separator: "\n\n\n\n"       ## 替换掉默认的 \n\n ，第一个至少连续三行的空行前的内容做为文章摘要
+excerpt_separator: "\n\n\n\n"
 
 
-### 自定义参数
+### self params
 site_name: kissdata
 site_description: keep it simple &#38; stupied by data | 爱小牛牛，爱生活
 url: http://blog.kissdata.com
 author: vincentzhwg
 author_github_url: https://github.com/vincentzhwg
 author_email: vincentzhwg@gmail.com
-duoshuo_short_name: kissdata        ## 多说，用于文章评论用的，请自己申请一个。若不用可注释掉。
-cnzz_id: 1253396463                 ## CNZZ的统计，请使用自己申请的id。若不用，注释掉即可。
-#kp747_id: 017020a090e0e3d7         ## 网站访问情况统计应用，详情可访问 kp747.com。若不用，注释掉即可。
+duoshuo_short_name: kissdata        ## duoshuo, for comments. comment it if you don't want it
+cnzz_id: 1253396463                 ## CNZZ. comment it if you don't want it
+#kp747_id: 017020a090e0e3d7         ## kp747.com. comment it if you don't want it
 
 
 
-### jekyll配置
+### jekyll params
 defaults:
     -
         scope:

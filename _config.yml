@@ -27,62 +27,40 @@ defaults:
         values:
             layout: "page"
             comments: "true"
-
     - 
         scope:
-            path: "web"
-            type: "posts"
+            path: "lua"
         values:
-            layout: "page"
-            category: "web"
-            comments: "true"
+            category: "lua"
     - 
         scope:
             path: "life"
-            type: "posts"
         values:
-            layout: "page"
             category: "life"
-            comments: "true"
     - 
         scope:
             path: "linux"
-            type: "posts"
         values:
-            layout: "page"
             category: "linux"
-            comments: "true"
     - 
         scope:
             path: "java"
-            type: "posts"
         values:
-            layout: "page"
             category: "java"
-            comments: "true"
     - 
         scope:
             path: "python"
-            type: "posts"
         values:
-            layout: "page"
             category: "python"
-            comments: "true"
     - 
         scope:
             path: "bigdata"
-            type: "posts"
         values:
-            layout: "page"
             category: "bigdata"
-            comments: "true"
     - 
         scope:
             path: "dada"
-            type: "posts"
         values:
-            layout: "page"
             category: "给小牛牛的开心"
-            comments: "true"
 
 

@@ -170,6 +170,9 @@ span#site_description {
     padding: 15px;
     border-radius: 3px;
 }
+.page h1, .page h2, .page h3 {
+    color: #BF76F0;
+}
 .page .head {
     margin-top: 5px;
 }

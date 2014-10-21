@@ -61,6 +61,5 @@ defaults:
         scope:
             path: "dada"
         values:
-            category: "给小牛牛的开心"
-
+            category: "小牛牛的happiness"
 

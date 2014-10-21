@@ -5,6 +5,9 @@
         <meta name="author" content="{{ site.author }}" />
         <meta name="viewport" content="width=device-width" /> 
         <title>{{ page.title }} | {{ site.site_name }}</title>
+        {% if page.tags %}
+        <meta name="keywords" content="{{ page.tags[0] }}{% for k in (1..page.tags.size) %}{% if k != page.tags.size %},{{ page.tags[k] }}{% endif %}{% endfor %}" />
+        {% endif %}
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

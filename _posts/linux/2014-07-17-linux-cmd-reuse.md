@@ -2,6 +2,7 @@
 title: linux中命令的复用
 dae: 2014-07-17 16:00:00 +0800
 tags:
+- cmd
 - linux
 ---
 

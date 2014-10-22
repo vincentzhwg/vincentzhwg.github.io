@@ -1,4 +1,4 @@
-website: [kissdata](http://blog.kissdata.com){:target="_blank"}
+website: [kissdata](http://blog.kissdata.com)
 
 ### Features of this template:
 

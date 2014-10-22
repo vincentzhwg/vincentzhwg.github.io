@@ -7,15 +7,15 @@
                 <p class="text-center">
                 Copyright 2014 - {{site.time | date:"%Y"}} | Gen time&#58; {{site.time | date:"%Y-%m-%d %H:%M:%S %Z"}}
 
-                {% if site.cnzz_id %}
                 <!-- cnzz -->
+                {% if site.cnzz_id %}
                 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_{{ site.cnzz_id }}'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s6.cnzz.com/z_stat.php%3Fid%3D{{ site.cnzz_id }}%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
                 {% endif %}
 
                 </p>
 
-                {% if site.kp747_id %}
                 <!-- kp747 -->
+                {% if site.kp747_id %}
                 <script type="text/javascript"> (function(_onload) { window.onload = function(){ typeof _onload =="function"?_onload():{}; var s= document.createElement('script');s.src="http://c.kp747.com/k.js?id={{ site.kp747_id }}&ref="+encodeURIComponent(document.referrer); document.body.appendChild(s); } })(window.onload); </script>
                 {% endif %}
 
@@ -25,4 +25,18 @@
     <div style="display:none;" class="back-to" id="toolBackTop">
         <a title="返回顶部" onclick="window.scrollTo(0,0);return false;" href="#top" class="back-top">返回顶部</a>
     </div>
+
+    <!-- google analytics -->
+    {% if site.google_analytics_ua %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '{{ site.google_analytics_ua }}', 'auto');
+        ga('send', 'pageview');
+    </script>
+    {% endif %}
+
+
 </div>

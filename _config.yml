@@ -12,9 +12,13 @@ url: http://blog.kissdata.com
 author: vincentzhwg
 author_github_url: https://github.com/vincentzhwg
 author_email: vincentzhwg@gmail.com
-duoshuo_short_name: kissdata        ## duoshuo, for comments. comment it if you don't want it
-cnzz_id: 1253396463                 ## CNZZ. comment it if you don't want it
-#kp747_id: 017020a090e0e3d7         ## kp747.com. comment it if you don't want it
+
+## if you don't want something below, just comment it or delete it. But if you want to use, please change your ids.
+duoshuo_short_name: kissdata
+#disqus_shortname: kissdata
+#google_analytics_ua: UA-52060953-1
+cnzz_id: 1253396463
+#kp747_id: 017020a090e0e3d7     ##    http://www.kp747.com
 
 
 

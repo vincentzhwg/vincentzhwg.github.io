@@ -1,4 +1,4 @@
-This template is based on bootstrap.
+website: [kissdata](http://blog.kissdata.com){:target="_blank"}
 
 ### Features of this template:
 

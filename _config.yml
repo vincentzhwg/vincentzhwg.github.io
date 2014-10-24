@@ -58,6 +58,11 @@ defaults:
             category: "python"
     - 
         scope:
+            path: "hbase"
+        values:
+            category: "hbase"
+    - 
+        scope:
             path: "bigdata"
         values:
             category: "bigdata"

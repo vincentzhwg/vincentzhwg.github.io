@@ -175,8 +175,20 @@ span#site_description {
     padding: 15px;
     border-radius: 3px;
 }
-.page h1, .page h2, .page h3 {
+.page h1 {
+    color: #F7C709;
+}
+.page h2 {
+    color: #09C7F7;
+}
+.page h3 {
     color: #BF76F0;
+}
+.page h4 {
+    color: #5DC472;
+}
+.page strong {
+    color: #FF33AD;
 }
 .page .head {
     margin-top: 5px;

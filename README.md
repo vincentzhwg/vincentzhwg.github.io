@@ -6,7 +6,7 @@ website: [kissdata](http://blog.kissdata.com)
 - post tags will be listed in the meta `keywords` of the html head
 - use google-code-prettify to highlight code
 - have a 'go to top' flow button
-- integrate many services, such as, disqus or duoshuo for comments, google analytics or cnzz, kp747 for website statics. If you don't want one of them, just comment of delete it in `_config.yml`
+- integrate many services, such as, disqus or duoshuo for comments, google analytics or cnzz for website statics. If you don't want one of them, just comment of delete it in `_config.yml`
 
 
 

@@ -57,9 +57,9 @@ defaults:
             category: "python"
     - 
         scope:
-            path: "hdfs"
+            path: "hadoop"
         values:
-            category: "hdfs"
+            category: "hadoop"
     - 
         scope:
             path: "hbase"
@@ -74,5 +74,5 @@ defaults:
         scope:
             path: "dada"
         values:
-            category: "小牛牛的故事薄"
+            category: "小牛牛的happiness"
 

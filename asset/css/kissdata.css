@@ -205,3 +205,20 @@ span#site_description {
 .page .content {
     font-size: 120%;
 }
+.page table {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    border-left: none;
+    border-top: none;
+}
+.page table th, .page table td {
+    border-left: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    border-right: none;
+    border-right: none;
+    padding: 5px;
+    padding-right: 10px;
+}
+.page table th {
+    font-weight: bold;
+}

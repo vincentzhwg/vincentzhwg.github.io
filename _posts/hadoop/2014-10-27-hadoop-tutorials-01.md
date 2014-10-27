@@ -320,5 +320,10 @@ hadoop管理员应该通过 `conf/hadoop-env.sh` 与 `conf/yarn-env.sh` 文件�
 本部分主要介绍在给定的配置文件中比较重要的配置选项。该部分内容请查阅hadoop官方文档：[Configuring the Hadoop Daemons in Non-Secure Mode](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html#Configuring_the_Hadoop_Daemons_in_Non-Secure_Mode){:target="_blank"}。
 
 
+### hadoop机架感知（Rack Awareness）
 
+HDFS与YARN组件具有机架感知能力。
 
+NameNode与ResourceManager通过调用`resolve`接口（需要通过管理配置模块进行配置）来获取从节点的机架信息，接口解决域名或IP地址到机架id的映射关系。
+
+使用哪个模块是通过配置项`topology.node.switch.mapping.impl`来指定的。模块的默认实现会调用`topology.script.file.name`配置项指定的一个的脚本/命令。 如果`topology.script.file.name`未被设置，对于所有传入的IP地址，模块会返回 /default-rack 作为机架id。

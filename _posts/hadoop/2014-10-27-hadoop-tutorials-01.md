@@ -327,3 +327,15 @@ HDFS与YARN组件具有机架感知能力。
 NameNode与ResourceManager通过调用`resolve`接口（需要通过管理配置模块进行配置）来获取从节点的机架信息，接口解决域名或IP地址到机架id的映射关系。
 
 使用哪个模块是通过配置项`topology.node.switch.mapping.impl`来指定的。模块的默认实现会调用`topology.script.file.name`配置项指定的一个的脚本/命令。 如果`topology.script.file.name`未被设置，对于所有传入的IP地址，模块会返回 /default-rack 作为机架id。
+
+**机架感知功能默认是没有的，需要通过配置项并结合相应脚本才能使用该功能。**
+
+### 监控NodeManager节点
+
+hadoop给管理员提供了一种监控NodeManager节点的机制，即通过配置NodeManager定期运行指定的脚本，来判断NodeManager节点是否正常工作。
+
+管理员判断一个节点是否处于正常运行状态，可以通过在指定脚本中执行任何的检查。**如果脚本检测到任何的不正常状态，它必须在标准输出中输出一行以 ERROR 开头的文本。**NodeManager节点定期执行该脚本，并检查脚本输出。如果脚本输出中包含上面所说的一行 ERROR 开头的文本，那么该节点被报告为`unhealthy`状态，将被ResourceManager列入其黑名单中，不会再有任务被分配到该节点。不过，该NodeManagera节点仍然继续定期运行检查脚本，如果后面恢复到`healthy`状态，该节点将从ResourceManager的黑名单中移除掉。这些状态的变化都可以从ResourceManager的web界面中查看得到。
+
+以下参数可以用来配置监控NodeManager节点的脚本:
+
+

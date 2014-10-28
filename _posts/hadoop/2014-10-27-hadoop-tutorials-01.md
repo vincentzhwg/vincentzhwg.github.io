@@ -8,10 +8,8 @@ tags:
 - install
 ---
 
-[TOC]
-
+* toc
 {:toc}
-
 
 # 机器环境
 

@@ -444,3 +444,7 @@ ResourceManager         |h171
 slave                   |h196, h171, h189
 
 只有3台机器，所以这里并没有让NameNode与ResourceManager做为专用节点，同样加入到从节点中了。线上环境的话还是应该NameNode与ResourceManager使用专用节点。
+
+### 配置免密码ssh登录
+
+只需要配置主节点到从节点的免密码登录。从节点到主节点，及从节点之间，是不需要配置的。运行NameNode及ResourceManager的节点即为主节点，剩余的都是从节点。

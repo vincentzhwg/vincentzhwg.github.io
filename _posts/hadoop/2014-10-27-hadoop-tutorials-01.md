@@ -1,12 +1,15 @@
 ---
 title: hadoop备忘01--安装
 date: 2014-10-27 10:40:00 +0800
-published: false
+published: true
 tags:
 - hadoop
 - hdfs
 - install
 ---
+
+[TOC]
+
 
 # 机器环境
 
@@ -328,7 +331,7 @@ NameNode与ResourceManager通过调用`resolve`接口（需要通过管理配置
 
 使用哪个模块是通过配置项`topology.node.switch.mapping.impl`来指定的。模块的默认实现会调用`topology.script.file.name`配置项指定的一个的脚本/命令。 如果`topology.script.file.name`未被设置，对于所有传入的IP地址，模块会返回 /default-rack 作为机架id。
 
-**机架感知功能默认是没有的，需要通过配置项并结合相应脚本才能使用该功能。**
+**机架感知功能默认是不起作用的，需要通过配置项并结合相应脚本才能使用该功能。**
 
 ### 监控NodeManager节点
 
@@ -338,4 +341,25 @@ hadoop给管理员提供了一种监控NodeManager节点的机制，即通过配
 
 以下参数可以用来配置监控NodeManager节点的脚本:
 
+参数                                                    |值                                     
+--------                                                |-------                               
+yarn.nodemanager.health-checker.script.path             |节点监控脚本路径                     
+yarn.nodemanager.health-checker.script.opts             |监控脚本参数                        
+yarn.nodemanager.health-checker.script.interval-ms      |监控脚本运行间隔，毫秒为单位
+yarn.nodemanager.health-checker.script.timeout-ms       |监控脚本运行的超时判定时间，毫秒为单位
+
+
+当节点上的部分本地磁盘出错时，这个错误不应由健康监控脚本来给出，因为NodeManager本身具备定期检查本地磁盘是否正常的能力，特别是检查 nodemanager-local-dirs 与 nodemanager-log-dirs ，当坏掉的本地磁盘或目录个数超过`yarn.nodemanager.disk-health-checker.min-healthy-disks`所设定的阈值时，那么该节点将被标记为`unhealthy`并告知ResourceManager。**启动盘的正常与否，这个倒是应该由监控脚本来负责。**
+
+### 从节点
+
+通常，选取一个节点做为NameNode，另外一个节点做为ResourceManager，这两个节点都是专用的。剩余的节点同时扮演DataNode与NodeManager角色，这些剩余的节点被称为从节点，将从节点的hostname或IP，一行一个，列在`conf/slaves`文件中。
+
+### 日志
+
+hadoop使用Apache log4j通过Apache Commons Logging framework来记录日志，编辑`conf/log4j.properties`文件进行日志配置。
+
+## **当所有必须的配置参数配置好之后，分发`HADOOP_CONF_DIR`目录下的所有内容到所有的节点上。**
+
+### 操作hadoop集群
 

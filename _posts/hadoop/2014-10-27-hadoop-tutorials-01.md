@@ -1,7 +1,6 @@
 ---
 title: hadoop备忘01--安装
 date: 2014-10-27 10:40:00 +0800
-published: false
 tags:
 - hadoop
 - hdfs
@@ -359,7 +358,78 @@ yarn.nodemanager.health-checker.script.timeout-ms       |监控脚本运行的�
 
 hadoop使用Apache log4j通过Apache Commons Logging framework来记录日志，编辑`conf/log4j.properties`文件进行日志配置。
 
-## **当所有必须的配置参数配置好之后，分发`HADOOP_CONF_DIR`目录下的所有内容到所有的节点上。**
+### 当所有必须的配置参数配置好之后，分发`HADOOP_CONF_DIR`目录下的所有内容到所有的节点上。
 
 ### 操作hadoop集群
+
+#### 启动hadoop
+
+为了启动hadoop集群，HDFS与YARN集群都需要启动。
+
+格式化一个新的分布式文件系统：
+    
+    $HADOOP_PREFIX/bin/hdfs namenode -format <cluster_name>
+
+用以下命令启动HDFS，需要在NameNode节点上执行该命令：
+    
+    $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+
+在所有的从节点上启动DataNode守护进程：
+
+    $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+
+在ResourceManager节点上启动YARN:
+
+    $HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
+
+在所有从节点上启动NodeManager守护进程：
+
+    $HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+
+启动一个WebAppProxy服务。如果需要启动多个WebAppProxy服务（带负载均衡），那就应该在每一个需要的节点上运行启动命令：
+
+    $HADOOP_YARN_HOME/sbin/yarn-daemon.sh start proxyserver --config $HADOOP_CONF_DIR
+
+启动MapReduce JobHistory Server，在被设定运行该服务的节点上：
+
+    $HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver --config $HADOOP_CONF_DIR
+
+#### 关停hadoop
+
+在NameNode节点上运行以下命令停止NameNode:
+    
+    $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs stop namenode
+
+在所有从节点上停止DataNode守护进程：
+
+    $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs stop datanode
+
+在ResourceManager节点上用以下命令停止ResourceManager:
+
+    $HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR stop resourcemanager
+
+在所有从节点上停止NodeManager守护进程：
+
+    $HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR stop nodemanager
+
+停止WebAppProxy。如果运行了多个WebAppProxy（带负载均衡）的话，那在每一个运行节点上：
+
+    $HADOOP_YARN_HOME/sbin/yarn-daemon.sh stop proxyserver --config $HADOOP_CONF_DIR
+    
+停止MapReduce JobHistory Server，在运行该服务的节点上：
+
+    $HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh stop historyserver --config $HADOOP_CONF_DIR
+
+
+### 网页查看接口地址
+
+当启动好hadoop集群之后，可通过以下网页地址进行查看服务是否正常。
+
+守护进程                        |web地址                    |备注
+------                          |------                     |-------
+NameNode                        |http://nn_host:port/       |端口默认为50070
+ResourceManager                 |http://rm_host:port/       |端口默认为8088
+MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为19888
+
+
 

@@ -1,3 +1,6 @@
+.navbar {
+    margin-bottom: 5px;
+}
 pre {
     font-size: 14px;
 }
@@ -81,12 +84,18 @@ span#site_description {
 }
 
 .miaodian {
-    height: 55px;
+    height: 15px;
 }
 
 .post-card, .cat-card {
     border: 1px solid #6F6F91;
     border-left-width: 6px;
+}
+.post-card .content ul#markdown-toc {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .cat-card {

@@ -1,7 +1,7 @@
 ---
 title: hadoop备忘01--安装
 date: 2014-10-27 10:40:00 +0800
-published: true
+published: false
 tags:
 - hadoop
 - hdfs

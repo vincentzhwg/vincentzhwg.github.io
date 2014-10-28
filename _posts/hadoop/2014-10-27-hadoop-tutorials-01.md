@@ -1,6 +1,7 @@
 ---
 title: hadoop备忘01--安装
 date: 2014-10-27 10:40:00 +0800
+published: false
 tags:
 - hadoop
 - hdfs
@@ -272,12 +273,12 @@ hadoop的配置主要通过两种重要类型的配置文件：
     * yarn-default.xml
     * mapred-default.xml
 - 节点的指定配置：
-    * conf/core-site.xml
-    * conf/hdfs-site.xml
-    * conf/yarn-site.xml
+    * etc/hadoop/core-site.xml
+    * etc/hadoop/hdfs-site.xml
+    * etc/hadoop/yarn-site.xml
     * mapred-site.xml
 
-另外，可以通过 conf/hadoop-env.sh 与 yarn-env.sh 来设置节点的指点配置，从而控制在 bin/ 目录下的可执行脚本。
+另外，可以通过 etc/hadoop/hadoop-env.sh 与 yarn-env.sh 来设置节点的指点配置，从而控制在 bin/ 目录下的可执行脚本。
 
 #### 节点配置
 
@@ -285,7 +286,7 @@ hadoop的配置主要通过两种重要类型的配置文件：
 
 #### 配置Hadoop守护进程的环境变量
 
-hadoop管理员应该通过 `conf/hadoop-env.sh` 与 `conf/yarn-env.sh` 文件来做hadoop守护进程中环境变量的节点配置。至少，你应该指定 JAVA_HOME 路径，在每一个节点上。
+hadoop管理员应该通过 `etc/hadoop/hadoop-env.sh` 与 `etc/hadoop/yarn-env.sh` 文件来做hadoop守护进程中环境变量的节点配置。至少，你应该指定 JAVA_HOME 路径，在每一个节点上。
 
 大多数情况下，应该指定 `HADOOP_PID_DIR` 与 `HADOOP_SECURE_DN_PID_DIR` 的路径，这两个路径应该是运行hadoop守护进程的用户才拥有写权限，以免被非法用户攻击。
 
@@ -352,11 +353,11 @@ yarn.nodemanager.health-checker.script.timeout-ms       |监控脚本运行的�
 
 ### 从节点
 
-通常，选取一个节点做为NameNode，另外一个节点做为ResourceManager，这两个节点都是专用的。剩余的节点同时扮演DataNode与NodeManager角色，这些剩余的节点被称为从节点，将从节点的hostname或IP，一行一个，列在`conf/slaves`文件中。
+通常，选取一个节点做为NameNode，另外一个节点做为ResourceManager，这两个节点都是专用的。剩余的节点同时扮演DataNode与NodeManager角色，这些剩余的节点被称为从节点，将从节点的hostname或IP，一行一个，列在`etc/hadoop/slaves`文件中。
 
 ### 日志
 
-hadoop使用Apache log4j通过Apache Commons Logging framework来记录日志，编辑`conf/log4j.properties`文件进行日志配置。
+hadoop使用Apache log4j通过Apache Commons Logging framework来记录日志，编辑`etc/hadoop/log4j.properties`文件进行日志配置。
 
 ### 当所有必须的配置参数配置好之后，分发`HADOOP_CONF_DIR`目录下的所有内容到所有的节点上。
 
@@ -432,4 +433,14 @@ ResourceManager                 |http://rm_host:port/       |端口默认为8088
 MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为19888
 
 
+## 完全分布式模式搭建的实例操作
 
+### 角色分配
+
+角色名称                |节点
+----                    |--------
+NameNode                |h196
+ResourceManager         |h171
+slave                   |h196, h171, h189
+
+只有3台机器，所以这里并没有让NameNode与ResourceManager做为专用节点，同样加入到从节点中了。线上环境的话还是应该NameNode与ResourceManager使用专用节点。

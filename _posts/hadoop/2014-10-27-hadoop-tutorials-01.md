@@ -433,9 +433,9 @@ ResourceManager                 |http://rm_host:port/       |端口默认为8088
 MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为19888
 
 
-## 完全分布式模式搭建的实例操作
+# 完全分布式模式搭建的实例操作
 
-### 角色分配
+## 角色分配
 
 角色名称                |节点
 ----                    |--------
@@ -445,6 +445,36 @@ slave                   |h196, h171, h189
 
 只有3台机器，所以这里并没有让NameNode与ResourceManager做为专用节点，同样加入到从节点中了。线上环境的话还是应该NameNode与ResourceManager使用专用节点。
 
-### 配置免密码ssh登录
+## 配置免密码ssh登录
 
 只需要配置主节点到从节点的免密码登录。从节点到主节点，及从节点之间，是不需要配置的。运行NameNode及ResourceManager的节点即为主节点，剩余的都是从节点。
+
+另外也要设置好各主节点之间及**主节点自己到自己（即localhost）**的免密码登录。
+
+在每一个节点上生成ssh密钥对，若是原来已经生成过，就不必再次生成了：
+
+    ## 注意，这里使用 dsa 方式，而不是ssh默认常用的 rsa 方式
+    ## 不采用默认的rsa方式，避免以后由于误操作重新生成密钥对时覆盖掉原来的，这样免密码登录就失效了
+    ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+
+将所有**主节点**的`~/.ssh/id_dsa.pub`文件内容集合成一个文件内容，并把该文件内容追加到所有节点的`~/.ssh/authorized_keys`文件内容后面。
+
+## 配置从节点
+
+将需要做为从节点的机器hostname或IP地址放到 hadoop 目录（即 ~/VMBigData/hadoop/default)下的`etc/hadoop/slaves`文件内容中，一行一个从节点，内容如下：
+
+    h171
+    h189
+    h196
+
+
+## 配置参数
+
+### 环境变量的配置
+
+在`etc/hadoop/hadoop-env.sh`文件的前面设置以下内容：
+
+    export JAVA_HOME=/home/work/VMBigData/java/default
+    export HADOOP_PREFIX=/home/work/VMBigData/hadoop/default
+
+

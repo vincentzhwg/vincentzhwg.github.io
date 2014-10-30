@@ -1,5 +1,5 @@
 ---
-title: hadoop备忘01--安装
+title: hadoop--安装
 date: 2014-10-27 10:40:00 +0800
 published: false
 tags:
@@ -57,6 +57,10 @@ tags:
 将每一台机器的hostname均设置为自己的域名，如 192.168.1.171 的hostname即为 h171.vm.com 。
 
 在后面的记录中，均使用节点简称来指某一个节点，如h171指h171.vm.com，h189指h189.vm.com，h196指h196.vm.com。
+
+## 所有节点的时间同步
+
+hadoop对于时间还是有一些要求，每一个节点的时间需要一致，所以最好搭建一个ntp服务，搭建过程参考：[ubuntu时间设置与ntp同步](/2014/10/28/ubuntu-ntp.html){:target="_blank"}。
 
 ## jdk安装
 
@@ -442,6 +446,8 @@ MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为1988
 NameNode                |h196
 ResourceManager         |h171
 slave                   |h196, h171, h189
+job history server      |h196
+
 
 只有3台机器，所以这里并没有让NameNode与ResourceManager做为专用节点，同样加入到从节点中了。线上环境的话还是应该NameNode与ResourceManager使用专用节点。
 
@@ -468,7 +474,51 @@ slave                   |h196, h171, h189
     h196
 
 
+## 建立存储数据的相应目录
+
+hdfs是分布式文件系统，不过最终数据还是存储在一个个节点的磁盘目录上，所以需要在相应的节点上建立相应的存放数据的目录，用于后面的配置文件中进行配置。
+
+### NameNode节点
+
+NameNode节点需要存放NameNode数据，本例中在196上的建立以下一个目录用于存放数据，实际生产环境中最好用一个专门存放数据的磁盘下的目录。
+
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/namenode
+
+### DataNode节点
+
+#### datanode数据
+
+从节点均做为DataNode节点，本例中在每一个从节点中建立以下两个目录用于存放datanode的数据。实际生产环境中，最好用不同磁盘下有一个目录。
+
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/datanode1
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/datanode2
+
+#### local-dirs目录
+
+local-dirs目录，用于存放作业运行时的存放中间结果的本地目录，一般设置多个，分摊磁盘IO负载。
+
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/localdir1
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/localdir2
+
+#### log-dirs目录
+
+log-dirs目录，用于存放日志，一般也设置多个。
+
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/logdir1
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/logdir2
+
+
+#### staging-dir目录
+
+yarn.app.mapreduce.am.staging-dir配置时所需要的目录，用于存放关于任务的一些日志信息。
+
+    mkdir -p /home/work/VMBigData/hadoop/data/hdfs/stagingdir
+
+
 ## 配置参数
+
+**注意：当下面的所有配置文件配置好之后，需要将所有配置文件分发到所有节点的相应路径下。**
+
 
 ### 环境变量的配置
 
@@ -477,4 +527,216 @@ slave                   |h196, h171, h189
     export JAVA_HOME=/home/work/VMBigData/java/default
     export HADOOP_PREFIX=/home/work/VMBigData/hadoop/default
 
+### core-site.xml
 
+    <configuration>
+        <property>
+            <name>fs.defaultFS</name>
+            <value>hdfs://h196.vm.com:9000</value>
+        </property>
+    </configuration>
+
+### hdfs-site.xml
+
+    <configuration>
+        <property>
+            <name>dfs.replication</name>
+            <!-- 单机版的一般设为1，若是集群，一般设为3。本次实例设为2 -->
+            <value>2</value>
+        </property>
+        <property>
+            <name>dfs.namenode.name.dir</name>
+            <!-- 创建的namenode文件夹位置，如有多个用逗号隔开。配置多个的话，每一个目录下数据都是相同的，达到数据冗余备份的目的 -->
+            <value>/home/work/VMBigData/hadoop/data/hdfs/namenode</value>
+        </property>
+        <property>
+            <name>dfs.datanode.data.dir</name>
+            <!-- 创建的datanode文件夹位置，多个用逗号隔开，实际不存在的目录会被忽略 -->
+            <value>/home/work/VMBigData/hadoop/data/hdfs/datanode1,/home/work/VMBigData/hadoop/data/hdfs/datanode2</value>
+        </property>
+    </configuration>
+
+### yarn-site.xml
+
+    <configuration>
+        <property>
+            <name>yarn.resourcemanager.hostname</name>
+            <value>h171.vm.com</value>
+        </property>
+        <property>
+            <name>yarn.scheduler.minimum-allocation-mb</name>
+            <!-- MapReduce作业时，每个task最少可申请内存 -->
+            <value>512</value>
+        </property>
+        <property>
+            <name>yarn.scheduler.maximum-allocation-mb</name>
+            <!-- MapReduce作业时，每个task最多可申请内存 -->
+            <value>2048</value>
+        </property>
+    
+    
+    
+        <property>
+            <name>yarn.nodemanager.resource.memory-mb</name>
+            <!-- NodeManager总的可用内存，这个要根据实际情况合理配置 -->
+            <value>2048</value>
+        </property>
+        <property>
+            <name>yarn.nodemanager.local-dirs</name>
+            <!-- 中间结果存放位置。注意，这个参数通常会配置多个目录，已分摊磁盘IO负载。 -->
+            <value>/home/work/VMBigData/hadoop/data/hdfs/localdir1,/home/work/VMBigData/hadoop/data/hdfs/localdir2</value>
+        </property>
+        <property>
+            <name>yarn.nodemanager.log-dirs</name>
+            <!-- 日志存放位置。注意，这个参数通常会配置多个目录，已分摊磁盘IO负载。 -->
+            <value>/home/work/VMBigData/hadoop/data/hdfs/logdir1,/home/work/VMBigData/hadoop/data/hdfs/logdir2</value>
+        </property>
+        <property>
+            <name>yarn.nodemanager.aux-services</name>
+            <value>mapreduce_shuffle</value>
+        </property>
+        <property>
+            <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+            <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+        </property>
+    </configuration>
+
+
+### mapred-site.xml
+
+
+    <configuration>
+        <property>
+            <name>mapreduce.framework.name</name>
+            <value>yarn</value>
+        </property>
+        <property>
+            <name>mapreduce.map.memory.mb</name>
+            <!-- 每个map task能申请到最大内存 -->
+            <value>512</value>
+        </property>
+        <property>
+            <name>mapreduce.map.java.opts</name>
+            <value>-Xmx1024M</value>
+        </property>
+        <property>
+            <name>mapreduce.reduce.memory.mb</name>
+            <value>2048</value>
+        </property>
+        <property>
+            <name>mapreduce.reduce.java.opts</name>
+            <value>-Xmx2048M</value>
+        </property>
+        <property>
+            <name>mapreduce.task.io.sort.mb</name>
+            <!-- 任务内部排序缓冲区大小 -->
+            <value>256</value>
+        </property>
+        <property>
+            <name>mapreduce.task.io.sort.factor</name>
+            <!-- map计算完全后的merge阶段，一次merge时最多可有多少个输入流 -->
+            <value>100</value>
+        </property>
+        <property>
+            <name>mapreduce.reduce.shuffle.parallelcopies</name>
+            <!-- reuduce shuffle阶段并行传输数据的数量 -->
+            <value>50</value>
+        </property>
+        <property>
+            <name>mapreduce.jobhistory.address</name>
+            <value>h196.vm.com:10020</value>
+        </property>
+        <property>
+            <name>mapreduce.jobhistory.webapp.address</name>
+            <value>h196.vm.com:19888</value>
+        </property>
+        <property>
+            <name>yarn.app.mapreduce.am.staging-dir</name>
+            <value>/home/work/VMBigData/hadoop/data/hdfs/stagingdir</value>
+        </property>
+    </configuration>
+
+
+
+## 启动hadoop
+
+**以下所有命令都是在hadoop目录（即 VMBigData/hadoop/default目录）下运行的。**
+
+### 格式化namenode
+
+**该操作只需首次的时候执行，以后重启hadoop时无需再次执行。**
+
+    bin/hdfs namenode -format
+
+### 在NameNode节点上启动NameNode守护进程
+
+    sbin/hadoop-daemon.sh --script hdfs start namenode
+
+### 启动所有从节点的DataNode守护进程
+
+    sbin/hadoop-daemon.sh --script hdfs start datanode
+
+### 在ResourceManager节点上启动ResourceManager守护进程
+
+    sbin/yarn-daemon.sh start resourcemanager
+
+### 启动所有从节点的NodeManager守护进程
+
+    sbin/yarn-daemon.sh start nodemanager
+
+### 启动MapReduce JobHistory Server，在设定为运行该服务的节点上
+
+    sbin/mr-jobhistory-daemon.sh start historyserver
+
+## 通过浏览器查看服务情况
+
+一旦hadoop服务正常启动之后，可通过下列地址在浏览器查看服务
+
+守护进程                        |web地址                    |备注
+------                          |------                     |-------
+NameNode                        |http://nn_host:port/       |端口默认为50070，本实例为：http://192.168.1.196:50070
+ResourceManager                 |http://rm_host:port/       |端口默认为8088，本实例为：http://192.168.1.171:8088
+MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为19888，本实例为：http://192.168.1.196:19888
+
+
+
+
+## 停止hadoop
+
+### 在NameNode节点上停止NameNode守护进程
+
+    sbin/hadoop-daemon.sh --script hdfs stop namenode
+
+### 停止所有从节点的DataNode守护进程
+
+    sbin/hadoop-daemon.sh --script hdfs stop datanode
+
+### 在ResourceManager节点上启动ResourceManager守护进程
+
+    sbin/yarn-daemon.sh start resourcemanager
+
+### 启动所有从节点的NodeManager守护进程
+
+    sbin/yarn-daemon.sh start nodemanager
+
+### 启动MapReduce JobHistory Server，在设定为运行该服务的节点上
+
+    sbin/mr-jobhistory-daemon.sh start historyserver
+
+### 在ResourceManager节点上停止ResourceManager守护进程
+
+    sbin/yarn-daemon.sh stop resourcemanager
+
+### 停止所有从节点的NodeManager守护进程
+
+    sbin/yarn-daemon.sh stop nodemanager
+
+### 停止MapReduce JobHistory Server，在设定为运行该服务的节点上
+
+    sbin/mr-jobhistory-daemon.sh stop historyserver
+
+
+
+
+
+- staging dir目录到底是在本地还是hdfs上？？

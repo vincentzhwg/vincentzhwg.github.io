@@ -1,5 +1,5 @@
 ---
-title: hadoop--安装
+title: hadoop--安装文档及完全分布式安装实例
 date: 2014-10-27 10:40:00 +0800
 published: false
 tags:
@@ -439,6 +439,10 @@ MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为1988
 
 # 完全分布式模式搭建的实例操作
 
+## 配置DNS及ntp时间同步服务
+
+这两个服务请参考上面所提到的相关章节。
+
 ## 角色分配
 
 角色名称                |节点
@@ -740,3 +744,4 @@ MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为1988
 
 
 - staging dir目录到底是在本地还是hdfs上？？
+- /tmp目录下有hadoop相关的pid？

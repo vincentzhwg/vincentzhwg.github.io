@@ -1,7 +1,6 @@
 ---
-title: hadoop--安装文档及完全分布式安装实例
+title: hadoop--安装介绍文档
 date: 2014-10-27 10:40:00 +0800
-published: false
 tags:
 - hadoop
 - hdfs
@@ -325,6 +324,13 @@ hadoop管理员应该通过 `etc/hadoop/hadoop-env.sh` 与 `etc/hadoop/yarn-env.
 #### 在 Non-Secure 模式下配置hadoop的守护进程
 
 本部分主要介绍在给定的配置文件中比较重要的配置选项。该部分内容请查阅hadoop官方文档：[Configuring the Hadoop Daemons in Non-Secure Mode](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html#Configuring_the_Hadoop_Daemons_in_Non-Secure_Mode){:target="_blank"}。
+
+下面是各文件的具体配置参数说明的官方链接：
+
+- [core-site.xml](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/core-default.xml){:target="_blank"}
+- [hdfs-site.xml](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml){:target="_blank"}
+- [mapred-site.xml](http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml){:target="_blank"}
+- [yarn-site.xml](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml){:target="_blank"}
 
 
 ### hadoop机架感知（Rack Awareness）
@@ -740,8 +746,3 @@ MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为1988
     sbin/mr-jobhistory-daemon.sh stop historyserver
 
 
-
-
-
-- staging dir目录到底是在本地还是hdfs上？？
-- /tmp目录下有hadoop相关的pid？

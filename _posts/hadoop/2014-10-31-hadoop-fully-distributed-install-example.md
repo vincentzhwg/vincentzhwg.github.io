@@ -426,6 +426,7 @@ log-dirs目录，用于存放日志，一般也设置多个。
 守护进程                        |web地址                    |备注
 ------                          |------                     |-------
 NameNode                        |http://nn_host:port/       |端口默认为50070，本实例为：http://192.168.1.196:50070
+Secondary NameNode              |http://snn_host:port/      |端口默认为50090，本实例为：http://192.168.1.171:50090
 ResourceManager                 |http://rm_host:port/       |端口默认为8088，本实例为：http://192.168.1.171:8088
 MapReduce JobHistory Server     |http://jhs_host:port/      |商品默认为19888，本实例为：http://192.168.1.196:19888
 

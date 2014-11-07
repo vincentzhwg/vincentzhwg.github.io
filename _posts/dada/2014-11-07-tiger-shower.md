@@ -3,7 +3,7 @@ title: 虎头虎脑泡澡
 ---
 
 <p class="text-center" style="font-size: 20px; font-weight:bold">
-    一个虎在外泡澡，还是有点怕怕的
+    一个虎自己在外泡澡，还是有点怕怕的
 </p>
 
 <p class="text-center">

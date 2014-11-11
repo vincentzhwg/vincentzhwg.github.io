@@ -6,6 +6,10 @@ tags:
 - trim
 ---
 
+* toc
+{:toc}
+
+
 ### 字符串trim函数
 
     -- trim whitespace from both ends of string
@@ -26,4 +30,24 @@ tags:
 
 
 
+
+
+### 字符串切割函数
+
+    function string_split(str, split_char)
+        local sub_str_tab = {}
+        local i = 1
+        local j
+        while true do
+            j = string.find(str, split_char, i)
+            if j ~= nil then print("i:" .. i .. ", j:" .. j)  else print("i:" .. i) end
+            if j == nil then
+                table.insert(sub_str_tab, string.sub(str, i))
+                break
+            end
+            table.insert(sub_str_tab, string.sub(str, i, j - 1))
+            i = j + 1
+        end
+        return sub_str_tab
+    end
 

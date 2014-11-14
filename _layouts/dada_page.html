@@ -5,6 +5,7 @@ layout: default
 <div class="page">
     <div class="head">
         <div class="title">{{ page.title }}</div>
+        <div class="date">date: {{ page.date | date:"%Y-%m-%d" }}</div>
     </div>
     <hr class="middle-margin" />
 
@@ -20,10 +21,6 @@ layout: default
     </div>
     <hr class="middle-margin" />
 
-    <div class="author-date">
-        <span class="date">date：{{ page.date | date:"%Y-%m-%d" }}</span>
-        <span class="author">author：{{ site.author }}</span>
-    </div>
 
     <div class="content">
         {{ content }}

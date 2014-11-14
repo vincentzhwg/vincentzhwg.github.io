@@ -74,5 +74,6 @@ defaults:
         scope:
             path: "dada"
         values:
+            layout: "dada_page"
             category: "小牛牛的happiness"
 

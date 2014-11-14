@@ -231,3 +231,11 @@ span#site_description {
 .page table th {
     font-weight: bold;
 }
+
+.page .author-date {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.page .author-date .date {
+    margin-right: 40px;
+}

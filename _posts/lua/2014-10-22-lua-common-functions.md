@@ -40,7 +40,6 @@ tags:
         local j
         while true do
             j = string.find(str, split_char, i)
-            if j ~= nil then print("i:" .. i .. ", j:" .. j)  else print("i:" .. i) end
             if j == nil then
                 table.insert(sub_str_tab, string.sub(str, i))
                 break

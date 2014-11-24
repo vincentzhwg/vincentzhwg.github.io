@@ -72,6 +72,11 @@ defaults:
             category: "bigdata"
     - 
         scope:
+            path: "vim"
+        values:
+            category: "vim"
+    - 
+        scope:
             path: "dada"
         values:
             layout: "dada_page"

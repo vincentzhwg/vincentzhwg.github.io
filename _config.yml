@@ -1,6 +1,6 @@
 ### jekyll params
 permalink: /:year/:month/:day/:title.html
-paginate: 8
+paginate: 5
 timezone: Asia/Shanghai
 excerpt_separator: "\n\n\n\n"
 

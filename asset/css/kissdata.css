@@ -196,6 +196,9 @@ span#site_description {
 .page h4 {
     color: #5DC472;
 }
+.page h5 {
+    color: #F6F680;
+}
 .page strong {
     color: #FF33AD;
 }

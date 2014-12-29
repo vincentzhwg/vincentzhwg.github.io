@@ -28,6 +28,14 @@ tags:
 	work soft nofile 65536
 	work hard nofile 65536
 
+如果不想一个个用户设置的话，那可以设置全局，如下
+
+	## 全局设置
+	## nofile 表示文件句柄数的设置
+	## soft即是软限制，hard是硬限制。用户可以超过soft设置的值，但一定不能超过hard 的值。一般soft比hard小
+	* soft nofile 65536
+	* hard nofile 65536
+
 这样设置之后，退出重新登录即生效。
 
 若想对work帐户的nofile再做更进一步的设置，可在 ~/.bashrc 文件下添加一行，如

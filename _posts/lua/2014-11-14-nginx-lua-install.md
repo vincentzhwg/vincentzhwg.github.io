@@ -19,13 +19,11 @@ tags:
 
 ### lua-nginx-module
 
-    wget https://github.com/openresty/lua-nginx-module/archive/v0.9.13rc1.tar.gz -O lua-nginx-module-v0.9.13rc1.tar.gz
-
-**原本打算安装v0.9.12版本的，但编译时发现有错误，改用v0.9.13rc1后就不会编译出错了。**
+    wget https://github.com/openresty/lua-nginx-module/archive/v0.9.13.tar.gz -O lua-nginx-module-v0.9.13.tar.gz
 
 ### nginx
 
-    wget http://nginx.org/download/nginx-1.7.7.tar.gz
+    wget http://nginx.org/download/nginx-1.7.9.tar.gz
 
 ### lua
 
@@ -66,11 +64,11 @@ tags:
 解压缩两个nginx编译时需要用到的模块源代码
 
     tar zxvf ngx_devel_kit-v0.2.19.tar.gz 
-    tar zxvf lua-nginx-module-v0.9.13rc1.tar.gz
+    tar zxvf lua-nginx-module-v0.9.13.tar.gz
 
 编译安装nginx
 
-    ./configure --prefix=/path/to/nginx-1.7.7 --add-module=/path/to/ngx_devel_kit-0.2.19 --add-module=/path/to/lua-nginx-module-0.9.13rc1 --with-http_ssl_module
+    ./configure --prefix=/path/to/nginx --add-module=/path/to/ngx_devel_kit-0.2.19 --add-module=/path/to/lua-nginx-module-0.9.13 --with-http_ssl_module
     make -j2
     make install
 
@@ -78,7 +76,7 @@ tags:
 
 lua一些常用的库，还是需要安装上的，这样方便以后随时使用，库的存放位置，这里在安装好后的nginx目录下新建一个`lua_so`目录：
 
-    cd /path/to/nginx-1.7.7
+    cd /path/to/nginx
     mkdir lua_so
 
 ### redis库

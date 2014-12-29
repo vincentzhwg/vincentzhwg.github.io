@@ -32,7 +32,7 @@ nginx: 1.7.9
 
 ### 通过`apt-get`安装的组件
 
-    sudo apt-get install libwrap0-dev libncurses5-dev libssl-dev libxml2-dev libsslcommon2-dev libcurl4-openssl-dev pkg-config libbz2-dev libjpeg-dev libpng12-dev libxpm-dev libfreetype6-dev libmcrypt-dev libxslt1-dev libiconv-hook-dev
+    sudo apt-get install libwrap0-dev libncurses5-dev libssl-dev libxml2-dev libsslcommon2-dev libcurl4-openssl-dev pkg-config libbz2-dev libjpeg-dev libpng12-dev libxpm-dev libfreetype6-dev libmcrypt-dev libxslt1-dev libiconv-hook-dev libpcre3-dev
 
 ### 通过编译安装的组件
 

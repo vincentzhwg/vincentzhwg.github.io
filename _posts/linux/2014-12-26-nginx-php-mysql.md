@@ -330,7 +330,9 @@ make成功之后，安装至编译时所指定的位置，需不需要`sudo`取�
 
 ### 编译nginx
 
-    ./configure --prefix=/path/to/nginx --with-http_ssl_module --with-http_stub_status_module
+    ./configure --prefix=/path/to/nginx --with-http_ssl_module --with-http_stub_status_module --with-http_gzip_static_module
+
+其中`--with-http_gzip_static_module`，此模块的作用就是在接到请求后，会到url相同的路径的文件系统去找扩展名为“.gz”的文件，比如：http://www.iteye.com/stylesheets/homepage.css，nginx就会先查找 stylesheets/homepage.css.gz 这个文件，如果存在直接把它发送出去，如果不存在，再将stylesheets/homepage.css文件进行gzip压缩，再发送出去，这样可以避免重复的压缩无谓的消耗资源，这个模块不受gzip_types限制，会对所有请求有效。所以建议不要在全局上使用，因为一般来说大部分都是动态请求，是不会有.gz这个文件的，建议只在局部我们确认有.gz的目录中使用。Nginx不会自动的将压缩结果写入文件系统，这点不同于lighttpd，所以如果想使用gzip_static模块，需要自己写脚本生成.gz文件。如果你的服务器因为某种原因不能使用 Nginx Gzip Static 模块，你也没必要耿耿于怀。事实上，Nginx Gzip Static 模块虽然对于页面访问速度有一定的提升，但是提升幅度是非常有限的，每次压缩后再传输比预读取 gz 文件传输慢不了多少，况且现在的主流浏览器都有缓存机制。
     
 ### 安装nginx
 

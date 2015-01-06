@@ -347,14 +347,13 @@ make成功之后，安装至编译时所指定的位置，需不需要`sudo`取�
     
     ## worker_processes的数值设置为cpu的核数
     worker_processes  4;
-    
-    error_log  logs/error.log;
-    #error_log  logs/error.log  notice;
-    #error_log  logs/error.log  info;
+    ## 绑定每个nginx进程所使用的CPU，使nginx可以利用cpu的多核，根据上面的不同数值进行设置，下面是数值为4时的设置
+    worker_cpu_affinity 0001 0010 0100 1000;
     
     #pid        logs/nginx.pid;
     
     events {
+        use epoll;
         worker_connections  65536;
     }
     
@@ -386,11 +385,13 @@ make成功之后，安装至编译时所指定的位置，需不需要`sudo`取�
                           '$status $body_bytes_sent "$http_referer" '
                           '"$http_user_agent" "$http_x_forwarded_for"';
 
-        ## 增加缓冲
-        access_log  logs/access.log main buffer=16k;
+        ## 若考虑性能时，可增加缓冲
+        #access_log  logs/access.log main buffer=16k;
+        access_log  logs/access.log main;
+        error_log   logs/error.log; 
     
         ## 调整客户端超时时间
-        client_max_body_size 500M;
+        client_max_body_size 50M;
         client_body_buffer_size 1m;
         client_body_timeout 15;
         client_header_timeout 15;

@@ -72,6 +72,11 @@ defaults:
             category: "bigdata"
     - 
         scope:
+            path: "design"
+        values:
+            category: "design"
+    - 
+        scope:
             path: "vim"
         values:
             category: "vim"
